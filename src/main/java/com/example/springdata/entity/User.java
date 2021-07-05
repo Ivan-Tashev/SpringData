@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data // Lombok
-@NoArgsConstructor
+//@NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -21,8 +21,13 @@ public class User {
     private Long id;
     @NotNull
     private String username;
-    @Column(nullable = false)
+    @NotNull
     private int age;
     @OneToMany(mappedBy = "user")
     private Set<Account> accounts = new HashSet<>();
+
+    public User(String username, int age) {
+        this.username = username;
+        this.age = age;
+    }
 }

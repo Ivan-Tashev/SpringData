@@ -11,7 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "accounts")
 @Data // Lombok
-@NoArgsConstructor
+//@NoArgsConstructor
 @RequiredArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -25,4 +25,8 @@ public class Account {
     @ManyToOne
     @ToString.Exclude // prevent infinity loop
     private User user;
+
+    public Account(BigDecimal balance) {
+        this.balance = balance;
+    }
 }
